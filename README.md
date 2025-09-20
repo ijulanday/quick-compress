@@ -3,6 +3,10 @@
 version 0.1
 These damn discord clips are too big!!
 
+## Prereqs 
+
+[ffmpeg](https://ffmpeg.org/)
+
 ## Install
 
 1. Clone this repo
