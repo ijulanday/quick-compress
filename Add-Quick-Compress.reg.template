@@ -1,0 +1,8 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.mp4\shell\QuickCompress]
+@="Quick Compress"
+"Icon"="path\\to\\icon"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.mp4\shell\QuickCompress\command]
+@="powershell.exe -NoProfile -ExecutionPolicy Bypass -File \"path\\to\\script.ps1\" \"%1\""
