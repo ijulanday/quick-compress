@@ -45,7 +45,10 @@ Section
     WriteRegStr HKCR "SystemFileAssociations\.mp4\shell\${REG_NAME}" "Icon" "$INSTDIR\quick_compress_icon.ico"
     # finally the good stuff
     WriteRegStr HKCR "SystemFileAssociations\.mp4\shell\${REG_NAME}\command" "" "powershell.exe -NoProfile -ExecutionPolicy Bypass -File $\"$INSTDIR\quick-compress.ps1$\" $\"%1$\""
-    
+    # uninstall information
+    WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${REG_NAME}" "DisplayName" "${APP_NAME}"
+    WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${REG_NAME}" "UninstallString" "$\"$INSTDIR\uninstaller.exe$\""
+
 SectionEnd
 
 # yay uninstaller
@@ -58,6 +61,7 @@ Section "Uninstall"
     Delete $INSTDIR\uninstaller.exe
 
     DeleteRegKey HKCR "SystemFileAssociations\.mp4\shell\${REG_NAME}"
+    DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${REG_NAME}"
 
     RMDIR $INSTDIR
 
