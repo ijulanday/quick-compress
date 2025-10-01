@@ -9,6 +9,11 @@ These damn discord clips are too big!!
 
 ## Install
 
+1. Install ffmpeg
+2. Run `QuickCompressSetup.exe` as admin :-)
+
+## Install using reg file
+
 1. Clone this repo
 2. Edit the .reg.template file to have the absolute paths to the script and icon, where necessary ("Icon"= and @=)
 3. Rename the reg template to .reg
