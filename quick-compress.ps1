@@ -41,7 +41,8 @@ else
     if (Get-logicalYesNo("ffmpeg not installed, install now?"))
     {
         winget install ffmpeg
-        & ffmpeg -i $InputFile -vf scale=1080:-1 $output
+        echo "ffmpeg installed successfully, pls re-run Quick Compress"
+        exit
     }
     else
     {
