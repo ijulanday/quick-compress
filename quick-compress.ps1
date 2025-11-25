@@ -33,8 +33,19 @@ $cmdName = "ffmpeg"
 
 if (Get-Command $cmdName -errorAction SilentlyContinue)
 {
-    # Call ffmpeg
-    & ffmpeg -i $InputFile -vf scale=1080:-1 $output
+    # variable for downscaling
+    $downscale = 3
+
+    # get width height to see divisible
+    $widthheight = ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=s=x:p=0 $InputFile
+    $width = $widthheight.split("x")[0]
+    $height = $widthheight.split("x")[1]
+    if ((($width / $downscale) % 2) -ne 0 -or (($height / $downscale) % 2) -ne 0)
+    {
+        $downscale = 2
+    }
+    $newwidth = $width / $downscale
+    & ffmpeg -i $InputFile -vf scale=${newwidth}:-1 $output
 }
 else
 {
